@@ -6,6 +6,15 @@ version: 2.1
 # See: https://circleci.com/docs/2.0/configuration-reference/#jobs
 jobs:
   
+  print-name:
+    docker: 
+      - image: circleci/node:13.8.0
+    steps:
+      -  run:
+          name: "My_Name"
+          command: "echo <<My_Name>> "
+
+
   print-hello:
     docker: 
       - image: circleci/node:13.8.0
