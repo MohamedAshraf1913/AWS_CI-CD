@@ -14,9 +14,9 @@ jobs:
           name: "Hello World in Output File"
           command: echo "text to output here" > output.txt
       - persist_to_workspace:
-        root: .
-        paths: 
-          - output.txt
+          root: ~/
+          paths: 
+            - output.txt
   
 
   print-hello-world-output:
@@ -25,9 +25,9 @@ jobs:
     steps:
       - run:
           name: "Hello World Printed form Output File"
-          command: cat output.txt
+          command: cat ~/output.txt
       - attach_workspace:
-          at: .
+          at: ~/
 
 
   print-name:
