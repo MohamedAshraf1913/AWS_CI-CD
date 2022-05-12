@@ -12,7 +12,7 @@ jobs:
     steps:
       -  run:
           name: "My_Name"
-          command: "echo <<My_Name>> "
+          command: "echo $My_Name "
 
 
   print-hello:
