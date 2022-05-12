@@ -85,3 +85,9 @@ workflows:
       - print-world:
           requires:
             - print-hello
+  OutputFile:
+    jobs:
+      - save-hello-world-output
+      - print-hello-world-output:
+          requires:
+            - save-hello-world-output
