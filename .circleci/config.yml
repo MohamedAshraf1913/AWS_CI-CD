@@ -5,7 +5,31 @@ version: 2.1
 # Define a job to be invoked later in a workflow.
 # See: https://circleci.com/docs/2.0/configuration-reference/#jobs
 jobs:
+
+  save-hello-world-output:
+    docker: 
+      - image: circleci/node:13.8.0
+    steps:
+      - run:
+          name: "Hello World in Output File"
+          command: echo "text to output here" > output.txt
+      - persist_to_workspace:
+        root: .
+        paths: 
+          - output.txt
   
+
+  print-hello-world-output:
+    docker: 
+      - image: circleci/node:13.8.0
+    steps:
+      - run:
+          name: "Hello World Printed form Output File"
+          command: cat output.txt
+      - attach_workspace:
+          at: .
+
+
   print-name:
     docker: 
       - image: circleci/node:13.8.0
