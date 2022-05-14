@@ -23,6 +23,20 @@ jobs:
             - output.txt
   
 
+  rollback-test:
+    docker: 
+      - image: circleci/node:13.8.0
+    steps:
+      - run:
+          name: "Make it Fail"
+          command: return 1
+      
+      - run:
+          name: "Rolling Back"
+          command: echo I failed
+          when: on_fail
+
+  
   command-test:
     docker: 
       - image: circleci/node:13.8.0
@@ -105,3 +119,6 @@ workflows:
   Command-Workflow:
     jobs:
       - command-test
+  Rollback-Workflow:
+    jobs:
+      - rollback-test
