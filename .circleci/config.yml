@@ -26,7 +26,8 @@ jobs:
   command-test:
     docker: 
       - image: circleci/node:13.8.0
-    command: print_pipeline_id
+    steps:
+      - print_pipeline_id
 
 
   print-hello-world-output:
